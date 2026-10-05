@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>টাইপ শিখি</title>
+<meta name="description" content="বাংলা (বিজয়) ও ইংরেজি টাইপিং শেখার সফটওয়্যার — পাঠ, অনুশীলন, স্পিড টেস্ট ও অগ্রগতি।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Tiro+Bangla&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-keys" aria-hidden="true"><span>ক</span><span>A</span></div>
+      <div class="brand-text">
+        <h1>টাইপ শিখি</h1>
+        <p>বাংলা (বিজয়) ও ইংরেজি টাইপিং টিউটর</p>
+      </div>
+    </div>
+    <div class="seg" id="langSwitch" role="radiogroup" aria-label="ভাষা">
+      <button type="button" role="radio" data-lang="bn">বাংলা</button>
+      <button type="button" role="radio" data-lang="en">English</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="বিভাগ">
+    <button type="button" role="tab" data-view="lesson">পাঠ</button>
+    <button type="button" role="tab" data-view="practice">অনুশীলন</button>
+    <button type="button" role="tab" data-view="test">স্পিড টেস্ট</button>
+    <button type="button" role="tab" data-view="progress">অগ্রগতি</button>
+    <button type="button" role="tab" data-view="guide">বিজয় গাইড</button>
+  </nav>
+
+  <main>
+    <section id="workspace" class="workspace">
+      <aside class="lessons" id="lessonPanel" aria-label="পাঠের তালিকা">
+        <h2 class="eyebrow">পাঠসমূহ</h2>
+        <ol id="lessonList"></ol>
+      </aside>
+
+      <div class="desk">
+        <div class="toolbar" id="toolbar"></div>
+
+        <div class="stats">
+          <div class="stat"><span class="stat-label">গতি</span><span class="stat-value" id="sWpm">০</span><span class="stat-unit">WPM</span></div>
+          <div class="stat"><span class="stat-label">নির্ভুলতা</span><span class="stat-value" id="sAcc">১০০</span><span class="stat-unit">%</span></div>
+          <div class="stat"><span class="stat-label" id="sTimeLabel">সময়</span><span class="stat-value" id="sTime">০:০০</span></div>
+          <div class="stat"><span class="stat-label">ভুল</span><span class="stat-value" id="sErr">০</span></div>
+        </div>
+        <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+
+        <div class="paper" id="paper">
+          <div class="paper-scroll" id="paperScroll"><div class="text" id="text"></div></div>
+          <div class="focus-veil" id="focusVeil" hidden>ক্লিক করে টাইপ শুরু করুন</div>
+        </div>
+
+        <label class="free-wrap" id="freeWrap" hidden>
+          <span class="eyebrow" id="freeLabel">এখানে টাইপ করুন</span>
+          <textarea id="freeInput" rows="2" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+        </label>
+
+        <div class="notice" id="notice" role="status" hidden></div>
+        <div class="hint" id="hint"></div>
+        <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+
+        <div class="controls">
+          <div class="seg seg-sm" id="inputSwitch" role="radiogroup" aria-label="টাইপ করার পদ্ধতি">
+            <button type="button" role="radio" data-input="guided"></button>
+            <button type="button" role="radio" data-input="free"></button>
+          </div>
+          <label class="check"><input type="checkbox" id="optFingers"> আঙুলের রং</label>
+          <label class="check"><input type="checkbox" id="optSound"> শব্দ</label>
+          <button type="button" class="btn" id="restartBtn">আবার শুরু <kbd>Esc</kbd></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="progressView" class="page" hidden></section>
+    <section id="guideView" class="page" hidden></section>
+  </main>
+
+  <footer class="foot">আপনার অনুশীলনের ফলাফল শুধু এই ব্রাউজারেই সংরক্ষিত থাকে।</footer>
+</div>
+
+<div class="overlay" id="result" hidden>
+  <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resTitle">
+    <p class="eyebrow" id="resKind"></p>
+    <h2 id="resTitle"></h2>
+    <div class="res-hero">
+      <span class="res-wpm" id="resWpm"></span>
+      <span class="res-wpm-label">শব্দ / মিনিট (WPM)</span>
+    </div>
+    <div class="res-stars" id="resStars" hidden></div>
+    <dl class="res-grid" id="resGrid"></dl>
+    <div class="res-weak" id="resWeak"></div>
+    <div class="res-actions" id="resActions"></div>
+  </div>
+</div>
+
+<script src="assets/bangla.js"></script>
+<script src="assets/content.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
